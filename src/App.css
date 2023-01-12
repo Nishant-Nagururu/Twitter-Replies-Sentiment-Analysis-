@@ -1,0 +1,38 @@
+nav {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #fafafa;
+}
+
+nav Link {
+  color: #0b69a6;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline-block;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  padding: 16px 32px;
+}
+
+body {
+  background-color: #CBC1DF;
+}
+
+
+
+
