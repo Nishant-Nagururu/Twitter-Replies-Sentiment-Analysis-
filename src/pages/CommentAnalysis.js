@@ -25,13 +25,41 @@ const CommentAnalysis = () => {
             {postID}
         );
 
-        console.log(tweet.data[0].text)
+        console.log(tweet);
+        console.log(tweet.data);
+        const replies = tweet.data
         setCurrPost("") 
+        var positives = 0;
+        var negatives = 0;
+        var neutral = 0;
+
+        replies.map(async (reply) => {
+            console.log(reply.text);
+            const sent = await axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=54985fc8c0290d2c82179f46023dccd7&txt=${reply.text}&lang=en`)
+            const sentiment = sent.data.score_tag;
+            console.log(sentiment)
+            if (sentiment === "P" || sentiment === "P+") {
+                positives += 1;
+            } else if (sentiment === "N" || sentiment === "N+") {
+                negatives += 1;
+            } else if (sentiment === "None") {
+                neutral += 1;
+            }
+            if (positives > negatives) {
+                setCurrSentiment("Positive")
+            } else if (negatives > positives) {
+                setCurrSentiment("Negative")
+            } else {
+                setCurrSentiment("Neutral")
+            }
+        })
+        setIsSubmitted(true);
+
 
         //SENTIMENT ANALYSIS SHIT BELOW IT WORKS
        
-        // const response = await axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=54985fc8c0290d2c82179f46023dccd7&txt=${currPost}&lang=en`)
-        // setCurrSentiment(response.data.score_tag);
+        // const sentiment = await axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=54985fc8c0290d2c82179f46023dccd7&txt=${text}&lang=en`)
+        // setCurrSentiment(sentiment.data.score_tag);
         // setIsSubmitted(true);
     };
 
