@@ -35,7 +35,7 @@ const CommentAnalysis = () => {
 
         replies.map(async (reply) => {
             console.log(reply.text);
-            const sent = await axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=54985fc8c0290d2c82179f46023dccd7&txt=${reply.text}&lang=en`)
+            const sent = await axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=${YOURAPIKEY}&txt=${reply.text}&lang=en`)
             const sentiment = sent.data.score_tag;
             console.log(sentiment)
             if (sentiment === "P" || sentiment === "P+") {

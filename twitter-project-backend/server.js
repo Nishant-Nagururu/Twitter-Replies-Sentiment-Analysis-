@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose');
 const { default: axios } = require('axios');
 const needle = require('needle');
-const token = 'AAAAAAAAAAAAAAAAAAAAAPR9lAEAAAAAjNyGlyplTqmWuGa%2BTSgo06gdFqk%3DeZU2mdsmxzsxNT7wjePbyFGSSEPRecaDy6TGL13ncBYN230wYc'
+const token = 'YOUR BEARER TOKEN HERE'
 const endpointURL = "https://api.twitter.com/2/tweets?";
 const getRepliesEndpoint  = "https://api.twitter.com/2/tweets/search/recent?query="
  
