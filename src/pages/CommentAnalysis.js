@@ -33,6 +33,8 @@ const CommentAnalysis = () => {
         var negatives = 0;
         var neutral = 0;
 
+        let YOURAPIKEY = "example";
+
         replies.map(async (reply) => {
             console.log(reply.text);
             const sent = await axios.post(`https://api.meaningcloud.com/sentiment-2.1?key=${YOURAPIKEY}&txt=${reply.text}&lang=en`)
